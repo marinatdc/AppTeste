@@ -7,6 +7,7 @@ interface ContainerTextProps {
 
 export const ContainerText = styled.Text<ContainerTextProps>`
     ${(props) => (props.color ? `color: ${props.color};` : '')}
-    
+    text-align: center;
+    font-weight: bold;
     font-size: ${(props)=> props.fontSize}
 `   ;

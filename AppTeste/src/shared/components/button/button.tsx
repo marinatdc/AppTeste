@@ -1,20 +1,55 @@
-import { TouchableOpacity, TouchableOpacityProps} from "react-native"
-import { styles } from "@/shared/components/button/buttonStyle"
+import { ActivityIndicator, TouchableOpacityProps} from "react-native"
+import { ButtonContainer, ButtonSecundary, ActivityIndicatorButton, ButtonDisable } from "@/shared/components/button/buttonStyle"
 
-import {Text} from "@/shared/components/text/text"
-import { ContainerText } from "../text/textStyle"
+import { Text } from "../text/text"
 import { theme } from "@/shared/themes/theme"
-import { textTypes } from "../text/textTypes"
 
-type Props = TouchableOpacityProps & {
+interface ButtonProps extends TouchableOpacityProps {
     title: string
-    margin?: number
+    margin?: string
+    type?: string
+    disable?: boolean
+    loading?: boolean
+    onPress?: () => void
 }
 
-export default function Button ({title, margin=0, ...rest}:Props) {
-    return (
-        <TouchableOpacity style={[styles.button, {margin}]} {...rest}>
-            <Text color={theme.colors.white.white} style={styles.text} >{title}</Text>
-        </TouchableOpacity>
-    )    
+export default function Button ({title, type, disable, onPress, loading, margin, ...props}:ButtonProps) {
+    
+    const hanldeOnPress = () => { //não carregar no console log quando estiver no loading
+        if (!loading && !disable && onPress) {
+            onPress();
+        }
+    }
+    const renderText = (color: string) => ( 
+        <>
+        <Text color={color}>{title}</Text>
+        {loading && <ActivityIndicatorButton color={theme.colors.white.white}/>}
+        </>
+        //carrega o disable
+    )
+
+    if (disable) {
+        return (
+            <ButtonDisable {...props} margin={margin}> 
+                {renderText(theme.colors.white.white)}
+            </ButtonDisable>
+        ) //sem onpress pq é desabilitado para ação
+    }
+
+    switch (type) {
+        case theme.buttons.buttonsTheme.secundary:
+            return (
+        <ButtonSecundary {...props} margin={margin} onPress={hanldeOnPress} >
+            {renderText(theme.colors.white.white)}
+        </ButtonSecundary>
+    ) 
+    
+        case theme.buttons.buttonsTheme.primary:
+        default:
+            return (
+        <ButtonContainer {...props} margin={margin} onPress={hanldeOnPress} >
+            {renderText(theme.colors.white.white)}
+        </ButtonContainer>
+    ) 
+    }  
 }
