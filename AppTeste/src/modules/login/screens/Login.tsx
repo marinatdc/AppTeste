@@ -16,8 +16,19 @@ export default function Login () {
 
     return (
         <View style={styles.view}>
-            <Text>Tela de Login :3</Text>
-            <Input />
+
+            <Input
+            margin="0px 0px 16px 0px" 
+            title="Email: "
+            placeholder="Digite seu email"
+            />
+
+            <Input 
+            title="Senha: "
+            placeholder="Digite sua senha"
+            secureTextEntry
+            />
+
             <Button 
             type={theme.buttons.buttonsTheme.secundary} 
             title="ENTRAR" 

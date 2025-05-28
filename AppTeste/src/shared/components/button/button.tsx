@@ -22,8 +22,8 @@ export default function Button ({title, type, disable, onPress, loading, margin,
     }
     const renderText = (color: string) => ( 
         <>
-        <Text color={color}>{title}</Text>
-        {loading && <ActivityIndicatorButton color={theme.colors.white.white}/>}
+        <Text fontWeight="bold" color={color}>{title}</Text>
+        {loading && <ActivityIndicatorButton color={theme.colors.realWhite.realWhite}/>}
         </>
         //carrega o disable
     )
@@ -31,7 +31,7 @@ export default function Button ({title, type, disable, onPress, loading, margin,
     if (disable) {
         return (
             <ButtonDisable {...props} margin={margin}> 
-                {renderText(theme.colors.white.white)}
+                {renderText(theme.colors.realWhite.realWhite)}
             </ButtonDisable>
         ) //sem onpress pq é desabilitado para ação
     }
@@ -40,7 +40,7 @@ export default function Button ({title, type, disable, onPress, loading, margin,
         case theme.buttons.buttonsTheme.secundary:
             return (
         <ButtonSecundary {...props} margin={margin} onPress={hanldeOnPress} >
-            {renderText(theme.colors.white.white)}
+            {renderText(theme.colors.realWhite.realWhite)}
         </ButtonSecundary>
     ) 
     
@@ -48,7 +48,7 @@ export default function Button ({title, type, disable, onPress, loading, margin,
         default:
             return (
         <ButtonContainer {...props} margin={margin} onPress={hanldeOnPress} >
-            {renderText(theme.colors.white.white)}
+            {renderText(theme.colors.realWhite.realWhite)}
         </ButtonContainer>
     ) 
     }  

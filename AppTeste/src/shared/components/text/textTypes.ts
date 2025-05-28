@@ -1,3 +1,4 @@
 export enum textTypes {
-    TITLE = 'TITLE'
+    TITLE = 'TITLE',
+    SMALL = 'SMALL',
 }

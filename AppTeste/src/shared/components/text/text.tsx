@@ -7,18 +7,23 @@ import { useMemo } from "react"
 interface TextProps extends TextPropsNative {
     color ?: string
     type ?: string
+    fontWeight ?: string
+    margin ?: string
 }
 
-export const Text = ({color, type, ...props}: TextProps) => {
+export const Text = ({margin, fontWeight, color, type, ...props}: TextProps) => {
     const handleFontSize = useMemo(() => {
         switch (type) {
             case textTypes.TITLE:
                 return '32px'
+            
+            case textTypes.SMALL:
+                return '14px'
             default:
                 return '16px';
         }
     }, [type]);
     return ( 
-        <ContainerText fontSize={handleFontSize} color={color} {...props} />
+        <ContainerText margin={margin} fontWeight={fontWeight} fontSize={handleFontSize} color={color} {...props} />
     ) 
 }
