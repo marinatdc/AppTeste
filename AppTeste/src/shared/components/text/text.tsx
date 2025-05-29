@@ -19,6 +19,9 @@ export const Text = ({margin, fontWeight, color, type, ...props}: TextProps) => 
             
             case textTypes.SMALL:
                 return '14px'
+            
+            case textTypes.MEDIUM:
+                return '20px'
             default:
                 return '16px';
         }
