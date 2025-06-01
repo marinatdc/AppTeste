@@ -5,7 +5,6 @@ import { Text } from "@/shared/components/text/text"
 import { theme } from "@/shared/themes/theme";
 import { textTypes } from "../text/textTypes";
 
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState } from "react";
 
 
@@ -18,6 +17,7 @@ interface InputProps extends TextInputProps {
 }
     
 export default function Input({margin, secureTextEntry, errorMessageError, title, ...props} : InputProps) {
+    
     const [currentSecure, setCurrentSecure] = useState<boolean>(!!secureTextEntry);
 
     const handleOnPressEye = () => {
@@ -35,9 +35,15 @@ export default function Input({margin, secureTextEntry, errorMessageError, title
             )}
 
             <View>
-                <ContainerInput hasSecureTextEntry={secureTextEntry} secureTextEntry={currentSecure} isError={!!errorMessageError} {...props}/>
+                <ContainerInput 
+                hasSecureTextEntry={secureTextEntry} 
+                secureTextEntry={currentSecure} isError={!!errorMessageError} 
+                {...props}/>
+                
                 {secureTextEntry && (
-                    <Icon onPress={handleOnPressEye} name={currentSecure ? "eye-outline" : "eye-off-outline" } size={22}/>
+                    <Icon onPress={handleOnPressEye} 
+                    name={currentSecure ? "eye-outline" : "eye-off-outline" } 
+                    size={22}/>
                 )}
             </View>
 

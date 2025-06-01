@@ -1,4 +1,4 @@
-import { ActivityIndicator, TouchableOpacityProps} from "react-native"
+import { TouchableOpacityProps} from "react-native"
 import { ButtonContainer, ButtonSecundary, ActivityIndicatorButton, ButtonDisable } from "@/shared/components/button/buttonStyle"
 
 import { Text } from "../text/text"
@@ -22,7 +22,12 @@ export default function Button ({title, type, disable, onPress, loading, margin,
     }
     const renderText = (color: string) => ( 
         <>
-        <Text fontWeight="bold" color={color}>{title}</Text>
+        <Text 
+        fontWeight="bold" 
+        color={color}
+        >
+            {title}
+        </Text>
         {loading && <ActivityIndicatorButton color={theme.colors.realWhite.realWhite}/>}
         </>
         //carrega o disable
@@ -47,7 +52,11 @@ export default function Button ({title, type, disable, onPress, loading, margin,
         case theme.buttons.buttonsTheme.primary:
         default:
             return (
-        <ButtonContainer {...props} margin={margin} onPress={hanldeOnPress} >
+        <ButtonContainer 
+        {...props} 
+        margin={margin} 
+        onPress={hanldeOnPress} 
+        >
             {renderText(theme.colors.realWhite.realWhite)}
         </ButtonContainer>
     ) 

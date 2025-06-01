@@ -12,21 +12,28 @@ interface TextProps extends TextPropsNative {
 }
 
 export const Text = ({margin, fontWeight, color, type, ...props}: TextProps) => {
+
     const handleFontSize = useMemo(() => {
         switch (type) {
             case textTypes.TITLE:
-                return '32px'
+                return '32px';
             
             case textTypes.SMALL:
-                return '14px'
+                return '14px';
             
             case textTypes.MEDIUM:
-                return '20px'
+                return '20px';
             default:
                 return '16px';
         }
     }, [type]);
+   
     return ( 
-        <ContainerText margin={margin} fontWeight={fontWeight} fontSize={handleFontSize} color={color} {...props} />
+        <ContainerText 
+        margin={margin} 
+        fontWeight={fontWeight}
+        fontSize={handleFontSize} 
+        color={color} 
+        {...props} />
     ) 
 }

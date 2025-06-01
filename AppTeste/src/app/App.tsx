@@ -10,7 +10,7 @@ export default function App () {
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <SafeAreaView>
-            <Modal 
+            {/*<Modal 
             onCloseModal={()=> setModalVisible(false)} 
             visible={modalVisible} 
             text="TEXTO TESTE" 
@@ -20,6 +20,7 @@ export default function App () {
             type={buttonsTheme.secundary}
             title="open" 
             onPress={()=> setModalVisible(true)}/>
+             */}
 
             <Login />
         </SafeAreaView>

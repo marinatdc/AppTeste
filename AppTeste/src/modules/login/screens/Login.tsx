@@ -1,5 +1,5 @@
 import {View, Text} from "react-native"
-import {styles} from "@/modules/login/styles/loginStyle"
+import {Imagelog, styles} from "@/modules/login/styles/loginStyle"
 
 //import {Text} from "@/shared/components/text/text"
 //import { theme } from "@/shared/themes/theme"
@@ -7,6 +7,7 @@ import {styles} from "@/modules/login/styles/loginStyle"
 import Button from "@/shared/components/button/button"
 import Input from "@/shared/components/input/input"
 import { theme } from "@/shared/themes/theme"
+import React from "react"
 
 
 export default function Login () {
@@ -16,6 +17,9 @@ export default function Login () {
 
     return (
         <View style={styles.view}>
+
+            <Imagelog resizeMode="contain" source={require('@/assets/images/Design_sem_nome-removebg-preview.png')}/>
+            
 
             <Input
             margin="0px 0px 16px 0px" 

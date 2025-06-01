@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
 
 export const styles = StyleSheet.create ({
     view: {
@@ -10,3 +11,9 @@ export const styles = StyleSheet.create ({
         padding: 16,
     },
 })
+
+export const Imagelog = styled.Image `
+    width: 400px;
+    height: 200px;
+    margin: 0px;
+`;
