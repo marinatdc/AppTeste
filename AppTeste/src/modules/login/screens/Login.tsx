@@ -1,19 +1,27 @@
-import {View, Text} from "react-native"
+import {View, Text, NativeSyntheticEvent, TextInputChangeEventData} from "react-native"
 import {Imagelog, styles} from "@/modules/login/styles/loginStyle"
-
-//import {Text} from "@/shared/components/text/text"
-//import { theme } from "@/shared/themes/theme"
 
 import Button from "@/shared/components/button/button"
 import Input from "@/shared/components/input/input"
 import { theme } from "@/shared/themes/theme"
-import React from "react"
+import React, { useState } from "react"
+import { useLogin } from "../hooks/useLogin"
+
 
 
 export default function Login () {
-    const hanldeOnPress = () => {
-        console.log('clicou')
-    }    
+    
+    //Funcionalidade
+    const {
+        email,
+        password,
+        loading,
+        errorMessage, 
+        hanldeOnPress,
+        handleOnChangeEmail,
+        handleOnChangePassword,
+    } = useLogin();
+
 
     return (
         <View style={styles.view}>
@@ -22,22 +30,29 @@ export default function Login () {
             
 
             <Input
+            value={email}
             margin="0px 0px 16px 0px" 
             title="Email: "
             placeholder="Digite seu email"
+            errorMessageError={errorMessage}
+            onChange={handleOnChangeEmail}
             />
 
             <Input 
+            value={password}
             title="Senha: "
             placeholder="Digite sua senha"
             secureTextEntry
+            onChange={handleOnChangePassword}
             />
 
             <Button 
             type={theme.buttons.buttonsTheme.secundary} 
+            loading={loading}
             title="ENTRAR" 
             margin="15px" 
-            onPress={hanldeOnPress}/>
+            onPress={hanldeOnPress}
+            />
         </View>
     )
 }
