@@ -2,13 +2,14 @@ import { SafeAreaView } from "react-native"
 
 import Login from "@/modules/login/screens/Login"
 import { useState } from "react";
-import Button from "@/shared/components/button/button";
-import Modal from '@/shared/components/modal/modal'
-import { buttonsTheme } from "@/shared/themes/buttons";
+
+import { Provider } from 'react-redux'
+import store from "@/store";
 
 export default function App () {
-    const [modalVisible, setModalVisible] = useState(false);
     return (
+        <Provider store={store}>
+        
         <SafeAreaView>
             {/*<Modal 
             onCloseModal={()=> setModalVisible(false)} 
@@ -24,5 +25,7 @@ export default function App () {
 
             <Login />
         </SafeAreaView>
+        
+        </Provider>
     )
 }
