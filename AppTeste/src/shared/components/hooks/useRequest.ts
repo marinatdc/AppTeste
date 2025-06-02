@@ -5,10 +5,11 @@ import { ReturnLogin } from "../types/returnLogin";
 import { UserType } from "../types/userType";
 import { useDispatch } from "react-redux";
 import { setUserAction } from "@/store/reducers/UserReducer";
+import { useUserReducer } from "@/store/reducers/UserReducer/useUserReduce";
 
 export const useRequest = () => {
 
-    const dispatch = useDispatch();
+    const { setUser } = useUserReducer ();
 
     const [loading, setLoading] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>('');
@@ -17,7 +18,7 @@ export const useRequest = () => {
         setLoading(true);
             const x = await connectionAPIPost<ReturnLogin>('/auth/login', body)
             .then((result) => {
-                dispatch(setUserAction(result.user))
+                setUser(result.user)
             })
             .catch(() => {
                         setErrorMessage('Usuário ou senha inválidos')

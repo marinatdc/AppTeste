@@ -1,20 +1,15 @@
-import ConnectionAPI from "@/shared/function/connection/connectionAPI";
-import axios from "axios";
 import { useState } from "react";
 import { NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
-import { connectionAPIPost } from '@/shared/function/connection/connectionAPI'
 import { useRequest } from "@/shared/components/hooks/useRequest";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
+import { useUserReducer } from "@/store/reducers/UserReducer/useUserReduce";
 
 export const useLogin = () => {
 
-    const { user } = useSelector((state: RootState) => state.userReducer);
+    const { user } = useUserReducer();
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const { authRequest, setErrorMessage, errorMessage, loading } = useRequest();
         
-    console.log('user', user)
 
     const hanldeOnPress = async () => {
         authRequest ({
