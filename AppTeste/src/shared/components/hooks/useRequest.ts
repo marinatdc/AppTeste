@@ -7,7 +7,11 @@ import { setUserAction } from "@/store/reducers/UserReducer";
 import { useUserReducer } from "@/store/reducers/UserReducer/useUserReduce";
 import { useGlobalReducer } from "@/store/reducers/globalReducer/useGlobalReducer";
 
+import { useRouter } from 'expo-router';
+
 export const useRequest = () => {
+
+    const router = useRouter();
 
     const { setUser } = useUserReducer ();
 
@@ -20,13 +24,14 @@ export const useRequest = () => {
         setLoading(true);
             const x = await connectionAPIPost<ReturnLogin>('/auth/login', body)
             .then((result) => {
-                setUser(result.user)
+                setUser(result.user);
+                 router.push('/home/home');
             })
             .catch(() => {
                         setModal({
                             visible: true,
-                            title: 'erro',
-                            text: 'erro',
+                            title: 'Erro',
+                            text: 'Usuário ou senha incorretos',
                         });
                     });
             

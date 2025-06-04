@@ -12,7 +12,7 @@ export const ButtonContainer = styled.TouchableOpacity<ButtonContainerProps>`
   border-radius: 15px;
   flex-direction:row;
   justify-content: center;
-  background-color: purple;
+  background-color: ${theme.colors.lightBlue.blue50};
   align-items: center;
 
   ${(props) => (props.margin ? `margin: ${props.margin};` : '')}

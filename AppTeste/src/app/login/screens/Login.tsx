@@ -1,11 +1,12 @@
 import {View, Text, NativeSyntheticEvent, TextInputChangeEventData} from "react-native"
-import {Imagelog, styles} from "@/modules/login/styles/loginStyle"
+import {Imagelog, styles} from "@/app/login/styles/loginStyle"
 
 import Button from "@/shared/components/button/button"
 import Input from "@/shared/components/input/input"
 import { theme } from "@/shared/themes/theme"
 import React, { useState } from "react"
 import { useLogin } from "../hooks/useLogin"
+import { router } from "expo-router"
 
 
 
@@ -49,10 +50,17 @@ export default function Login () {
             <Button 
             type={theme.buttons.buttonsTheme.secundary} 
             loading={loading}
-            title="ENTRAR" 
+            title="Entrar" 
             margin="15px" 
             onPress={hanldeOnPress}
             />
+
+            <Button
+            type={theme.buttons.buttonsTheme.primary}
+            loading={loading}
+            title="Teste de Navegação"
+            onPress={() => router.navigate('/home/home')}
+            /> 
         </View>
     )
-}
+}   
