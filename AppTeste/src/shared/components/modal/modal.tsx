@@ -10,7 +10,7 @@ import { buttonsTheme } from '@/shared/themes/buttons';
 
 interface ModalProps extends ModalPropsReact {
      title: string;
-     text: string; 
+     text: string;
      onCloseModal: () => void;
 }
 

@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import userReducer from '@/store/reducers/UserReducer'
+import globalReducer from '@/store/reducers/globalReducer'
 
 export const store = configureStore({
   reducer: {
     userReducer,
+    globalReducer,
   },
 })
 
